@@ -1,5 +1,5 @@
 import { useState } from 'react';
-export const AuthForm = ({ cb }) => {
+export const AuthForm = ({ onSubmit }) => {
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -13,8 +13,9 @@ export const AuthForm = ({ cb }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    cb(form);
+
     // dispatch(loginUser(form));
+    onSubmit(form);
   };
 
   return (

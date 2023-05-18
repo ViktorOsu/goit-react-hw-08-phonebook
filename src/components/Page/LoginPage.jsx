@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { loginUser } from '../LoginForm';
 
 export const LoginPage = () => {
   const dispatch = useDispatch();

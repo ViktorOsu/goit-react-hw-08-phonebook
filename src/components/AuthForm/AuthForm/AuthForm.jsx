@@ -1,4 +1,5 @@
-const AuthForm = ({ cb }) => {
+import { useState } from 'react';
+export const AuthForm = ({ cb }) => {
   const [form, setForm] = useState({
     name: '',
     email: '',

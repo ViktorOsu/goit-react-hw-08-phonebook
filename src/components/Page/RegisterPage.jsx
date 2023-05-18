@@ -13,7 +13,11 @@ export const RegisterPage = () => {
   return (
     <>
       <h1>RegisterPage</h1>
-      <AuthForm onSubmit={handleRegisterUser} />
+      <AuthForm
+        onSubmit={handleRegisterUser}
+        submitTitle="Register"
+        inputsName={{ name: '', email: '', password: '' }}
+      />
     </>
   );
 };

@@ -1,10 +1,13 @@
 import { useState } from 'react';
-export const AuthForm = ({ onSubmit }) => {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
+
+export const AuthForm = ({ onSubmit, submitTitle, inputsName }) => {
+  // const [form, setForm] = useState({
+  //   name: '',
+  //   email: '',
+  //   password: '',
+  // });
+
+  const [form, setForm] = useState(inputsName);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -20,7 +23,21 @@ export const AuthForm = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="">
+      {Object.keys(inputsName).map(el => {
+        return (
+          <label htmlFor="" key={el}>
+            <p>{el}</p>
+            <input
+              type="text"
+              name={el}
+              value={form[el]}
+              onChange={handleChange}
+              placeholder={`Enter ${el}...`}
+            />
+          </label>
+        );
+      })}
+      {/* <label htmlFor="">
         <p>Name</p>
         <input
           type="text"
@@ -49,8 +66,8 @@ export const AuthForm = ({ onSubmit }) => {
           onChange={handleChange}
           placeholder="Enter password..."
         />
-      </label>
-      <button type="submit">Login</button>
+      </label> */}
+      <button type="submit">{submitTitle}</button>
     </form>
   );
 };

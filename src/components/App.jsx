@@ -6,7 +6,7 @@ import { LoginPage } from '../components/Page/LoginPage';
 import { fetchCurrentUser } from '../redux/auth/authOperations';
 import { ContactPage } from '../components/Page/ContactPage';
 import { Navigation } from '../components/Navigation/Navigation';
-import { HomePage } from './Page/Home';
+import { Home } from './Page/Home';
 import { PublicRoute } from './PublicRoute/PublicRoute';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 
@@ -21,8 +21,8 @@ export const App = () => {
     <>
       <Navigation />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        {/* <Route index element={<HomePage />} /> */}
+        <Route path="/" element={<Home />} />
+        {/* <Route index element={<Home />} /> */}
         <Route
           path="/register"
           element={

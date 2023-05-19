@@ -9,18 +9,26 @@ export const Navigation = () => {
   return (
     <header className={s.header}>
       <nav>
-        <div className={s.nav_menu}>
+        <div className={s.navMenu}>
           {!isAuth && (
             <>
-              <div className={s.nav_menu_li}>
-                <Link to="/register" className={s.nav_link}>
-                  Register
+              <div className={s.navHome}>
+                <Link to="/" className={s.navigateLinkHome}>
+                  Home
                 </Link>
               </div>
-              <div className={s.nav_menu_li}>
-                <Link to="/login" className={s.nav_link}>
-                  Login
-                </Link>
+
+              <div className={s.navBox}>
+                <div className={s.navRegLog}>
+                  <Link to="/register" className={s.navigateLink}>
+                    Register
+                  </Link>
+                </div>
+                <div className={s.navRegLog}>
+                  <Link to="/login" className={s.navigateLink}>
+                    Login
+                  </Link>
+                </div>
               </div>
             </>
           )}

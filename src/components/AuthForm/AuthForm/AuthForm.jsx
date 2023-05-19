@@ -1,12 +1,8 @@
 import { useState } from 'react';
+// import { InputForm, FormTitle, ButtonForm } from './AuthFormStyled';
+import s from '../AuthForm.module.css';
 
 export const AuthForm = ({ onSubmit, submitTitle, inputsName }) => {
-  // const [form, setForm] = useState({
-  //   name: '',
-  //   email: '',
-  //   password: '',
-  // });
-
   const [form, setForm] = useState(inputsName);
 
   const handleChange = e => {
@@ -17,17 +13,17 @@ export const AuthForm = ({ onSubmit, submitTitle, inputsName }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    // dispatch(loginUser(form));
     onSubmit(form);
   };
-
+  const hasEmptyInp = Object.values(form).some(el => el === '');
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={s.form} onSubmit={handleSubmit}>
       {Object.keys(inputsName).map(el => {
         return (
-          <label htmlFor="" key={el}>
+          <label className={s.form_label} htmlFor="" key={el}>
             <p>{el}</p>
             <input
+              className={s.form_input}
               type="text"
               name={el}
               value={form[el]}
@@ -37,37 +33,9 @@ export const AuthForm = ({ onSubmit, submitTitle, inputsName }) => {
           </label>
         );
       })}
-      {/* <label htmlFor="">
-        <p>Name</p>
-        <input
-          type="text"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          placeholder="Enter name..."
-        />
-      </label>
-      <label htmlFor="">
-        <p>Email</p>
-        <input
-          type="text"
-          name="email"
-          value={form.email}
-          onChange={handleChange}
-          placeholder="Enter email..."
-        />
-      </label>
-      <label htmlFor="">
-        <p>Password</p>
-        <input
-          type="text"
-          name="password"
-          value={form.password}
-          onChange={handleChange}
-          placeholder="Enter password..."
-        />
-      </label> */}
-      <button type="submit">{submitTitle}</button>
+      <button className={s.form_button} type="submit" disabled={hasEmptyInp}>
+        {submitTitle}
+      </button>
     </form>
   );
 };

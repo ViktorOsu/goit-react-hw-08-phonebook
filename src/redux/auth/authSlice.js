@@ -26,12 +26,11 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(register.fulfilled, (state, { payload }) => {
-        return {
-          isAuth: true,
-          isLoading: false,
-          error: null,
-          ...payload,
-        };
+        state.isLoggedIn = true;
+        state.isAuth = true;
+        state.error = null;
+        state.isLoading = false;
+        state.token = payload.token;
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -41,12 +40,12 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(login.fulfilled, (state, { payload }) => {
-        return {
-          isAuth: true,
-          isLoading: false,
-          error: null,
-          ...payload,
-        };
+        state.isLoggedIn = true;
+        state.isAuth = true;
+        state.error = null;
+        state.isLoading = false;
+        state.token = payload.token;
+        state.user = payload.user;
       })
       .addCase(login.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -56,12 +55,10 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(logOut.fulfilled, (state, { payload }) => {
-        return {
-          isAuth: true,
-          isLoading: false,
-          error: null,
-          ...payload,
-        };
+        state.isLoggedIn = false;
+        state.user = { name: null, email: null };
+        state.token = null;
+        state.isAuth = false;
       })
       .addCase(logOut.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -72,13 +69,10 @@ export const authSlice = createSlice({
       })
       .addCase(fetchCurrentUser.fulfilled, (state, { payload }) => {
         console.log(payload);
-        return {
-          ...state,
-          isAuth: true,
-          isLoading: false,
-          error: null,
-          ...payload,
-        };
+        state.isLoggedIn = true;
+        state.user = { ...payload };
+        state.isAuth = true;
+        state.error = null;
       })
       .addCase(fetchCurrentUser.rejected, (state, { payload }) => {
         state.isLoading = false;

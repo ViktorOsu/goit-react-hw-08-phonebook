@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
 import { AuthForm } from 'components/AuthForm/AuthForm/AuthForm';
@@ -12,7 +11,7 @@ export const RegisterPage = () => {
 
   return (
     <>
-      <h1>RegisterPage</h1>
+      {/* <h1>RegisterPage</h1> */}
       <AuthForm
         onSubmit={handleRegisterUser}
         submitTitle="Register"

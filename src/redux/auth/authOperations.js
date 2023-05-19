@@ -42,37 +42,59 @@ export const login = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    await axios.post('/users/logout');
+    const { data } = await axios.post('/users/logout');
     token.unset();
+    return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
 
+// export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+//   try {
+//     await axios.post('/users/logout');
+//     token.unset();
+//   } catch (error) {
+//     return thunkAPI.rejectWithValue(error.message);
+//   }
+// });
+
+// export const fetchCurrentUser = createAsyncThunk(
+//   'auth/refresh',
+//   async (_, thunkApi) => {
+//     const storage = thunkApi.getState();
+//     const persistToken = storage.auth.token;
+
+//     console.log(persistToken);
+
+//     if (persistToken === null) {
+//       return thunkApi.rejectWithValue();
+//     }
+//     token.set(persistToken);
+//     try {
+//       const { data } = await axios.get('/users/current');
+//       console.log(data);
+//       return data;
+//     } catch (error) {
+//       return thunkApi.rejectWithValue(error.message);
+//     }
+//   }
+// );
 export const fetchCurrentUser = createAsyncThunk(
-  'auth/refresh',
-  async (_, thunkApi) => {
-    const storage = thunkApi.getState();
-    const persistToken = storage.user.token;
+  'auth/getUser',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
 
-    console.log(persistToken);
-
-    if (persistToken === null) {
-      return thunkApi.rejectWithValue();
+    if (!persistedToken) {
+      return thunkAPI.rejectWithValue();
     }
-    token.set(persistToken);
+    token.set(persistedToken);
     try {
       const { data } = await axios.get('/users/current');
-      console.log(data);
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
-  // {
-  //   condition(_, { getState }) {
-  //     const { idToken } = getState().auth;
-  //     return Boolean(idToken);
-  //   },
-  // }
 );

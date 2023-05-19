@@ -13,8 +13,12 @@ export const ContactPage = () => {
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
+  // const isUserExist = useSelector((state) => state.auth.localId);
 
   useEffect(() => {
+    //   !isAuth && isUserExist && dispatch(getContact());
+    // }, [dispatch, isAuth, isUserExist]);
+
     if (isAuth) {
       dispatch(fetchContacts());
     }

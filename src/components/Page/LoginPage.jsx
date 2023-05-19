@@ -7,12 +7,11 @@ export const LoginPage = () => {
 
   const handleLoginUser = data => {
     dispatch(login(data));
-    // console.log('login :>>', data);
   };
 
   return (
     <>
-      <h1>LoginPage</h1>
+      {/* <h1>LoginPage</h1> */}
       <AuthForm
         onSubmit={handleLoginUser}
         submitTitle={'login'}

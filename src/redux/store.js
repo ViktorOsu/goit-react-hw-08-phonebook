@@ -19,7 +19,7 @@ const contactConfigure = { key: 'contacts', storage, blacklist: ['filter'] };
 const authPersistConfig = {
   key: 'token',
   storage,
-  whitelist: ['idToken'],
+  whitelist: ['token'],
 };
 
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);

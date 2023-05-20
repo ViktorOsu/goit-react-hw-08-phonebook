@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 
 export const PhoneBook = styled.div`
-  margin: 20px;
+  margin: 0 auto;
+  margin-top: 30px;
   width: 500px;
   display: flex;
   flex-direction: column;

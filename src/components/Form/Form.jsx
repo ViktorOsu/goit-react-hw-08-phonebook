@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
-import { PhonebookForm, SubmitBtn, FormTitle, FormItem } from './Form.styled';
 import { addContact } from 'redux/contacts/contactsOperations';
 import { useDispatch } from 'react-redux';
+import {
+  PhonebookForm,
+  SubmitBtn,
+  FormTitle,
+  FormItem,
+  ContactsWper,
+} from './FormStyled';
 
 export const Form = ({ checkDuplicate }) => {
   const [number, setNumber] = useState('');
@@ -29,26 +35,28 @@ export const Form = ({ checkDuplicate }) => {
   return (
     <PhonebookForm>
       <form onSubmit={onFormSubmit}>
-        <FormTitle>Phonebook</FormTitle>
-        <FormItem>Name</FormItem>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleChange}
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        />
-        <FormItem>Number</FormItem>
-        <input
-          type="tel"
-          name="number"
-          value={number}
-          onChange={handleChange}
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-        />
-        <SubmitBtn type="submit">Add contact</SubmitBtn>
+        <ContactsWper>
+          <FormTitle>Phonebook</FormTitle>
+          <FormItem>Name</FormItem>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+          />
+          <FormItem>Number</FormItem>
+          <input
+            type="tel"
+            name="number"
+            value={number}
+            onChange={handleChange}
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+          />
+          <SubmitBtn type="submit">Add contact</SubmitBtn>
+        </ContactsWper>
       </form>
     </PhonebookForm>
   );

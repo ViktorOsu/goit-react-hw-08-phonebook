@@ -14,10 +14,10 @@ import {
 import storage from 'redux-persist/lib/storage';
 // import { contacts } from './contactsSlice';
 
-const contactConfigure = { key: 'contacts', storage, blacklist: ['filter'] };
+// const contactConfigure = { key: 'contacts', storage, blacklist: ['filter'] };
 
 const authPersistConfig = {
-  key: 'token',
+  key: 'auth',
   storage,
   whitelist: ['token'],
 };
@@ -25,7 +25,7 @@ const authPersistConfig = {
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 
 const rootReducer = combineReducers({
-  contacts: persistReducer(contactConfigure, contactsReducer),
+  contacts: contactsReducer,
   auth: persistedAuthReducer,
 });
 

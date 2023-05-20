@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import { InputForm, FormTitle, ButtonForm } from './AuthFormStyled';
+import PropTypes from 'prop-types';
 import s from '../AuthForm.module.css';
 
 export const AuthForm = ({ onSubmit, submitTitle, inputsName }) => {
@@ -38,4 +38,10 @@ export const AuthForm = ({ onSubmit, submitTitle, inputsName }) => {
       </button>
     </form>
   );
+};
+
+AuthForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  submitTitle: PropTypes.string.isRequired,
+  inputsName: PropTypes.objectOf(PropTypes.string).isRequired,
 };

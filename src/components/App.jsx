@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { RegisterPage } from '../components/Page/RegisterPage';
-import { LoginPage } from '../components/Page/LoginPage';
+import { RegisterPage } from '../pages/RegisterPage';
+import { LoginPage } from '../pages/LoginPage';
 import { fetchCurrentUser } from '../redux/auth/authOperations';
-import { ContactPage } from '../components/Page/ContactPage';
+import { ContactPage } from '../pages/ContactPage';
 import { Navigation } from '../components/Navigation/Navigation';
-import { Home } from './Page/Home';
+import { Home } from '../pages/Home';
 import { PublicRoute } from './PublicRoute/PublicRoute';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 

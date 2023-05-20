@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
-import { Form } from '../Form/Form';
-import { Filter } from '../Filter/Filter';
-import { ContactList } from '../ContactList/ContactList';
-import { PhoneBook, ContactsTitle, ContactsWper } from '../App.styled';
+import { Form } from '../components/Form/Form';
+import { Filter } from '../components/Filter/Filter';
+import { ContactList } from '../components/ContactList/ContactList';
+import {
+  PhoneBook,
+  ContactsTitle,
+  ContactsWper,
+} from '../components/App.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchContacts } from '../../redux/contacts/contactsOperations';
-import { selectContacts, selectFilter } from '../../redux/selectors';
-import { selectIsAuth } from '../../redux/auth/authSelector';
+import { fetchContacts } from '../redux/contacts/contactsOperations';
+import { selectContacts, selectFilter } from '../redux/selectors';
+import { selectIsAuth } from '../redux/auth/authSelector';
 
 export const ContactPage = () => {
   const contacts = useSelector(selectContacts);

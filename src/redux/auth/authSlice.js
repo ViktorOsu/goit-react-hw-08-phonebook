@@ -14,11 +14,11 @@ const initialState = {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    logOut() {
-      return { ...initialState };
-    },
-  },
+  // reducers: {
+  //   logOut() {
+  //     return { ...initialState };
+  //   },
+  // },
 
   extraReducers: builder =>
     builder
@@ -31,6 +31,7 @@ export const authSlice = createSlice({
         state.error = null;
         state.isLoading = false;
         state.token = payload.token;
+        state.user = payload.user;
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.isLoading = false;

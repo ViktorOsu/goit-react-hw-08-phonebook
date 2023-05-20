@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { selectToken } from 'redux/auth/authSelector';
+import PropTypes from 'prop-types';
 
 export const PrivateRoute = ({ children }) => {
   const authToken = useSelector(selectToken);
@@ -8,4 +9,8 @@ export const PrivateRoute = ({ children }) => {
     return <Navigate to="/login" />;
   }
   return children;
+};
+
+PrivateRoute.propTypes = {
+  children: PropTypes.node.isRequired,
 };
